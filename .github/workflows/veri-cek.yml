@@ -1,0 +1,42 @@
+name: İSPARK veri çek
+
+on:
+  schedule:
+    # Saat UTC'dir (Türkiye = UTC+3). Her 15 dakikada bir.
+    # Tam saat başlarında GitHub yoğun olduğu için dakikaları kaydırdık.
+    - cron: "7,22,37,52 * * * *"
+  workflow_dispatch: # Elle çalıştırma butonu (test için)
+
+permissions:
+  contents: write
+
+concurrency:
+  group: ispark-veri
+  cancel-in-progress: false
+
+jobs:
+  cek:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Bağımlılıkları kur
+        run: pip install -r requirements.txt
+
+      - name: Veriyi çek ve CSV'ye ekle
+        run: python ispark_github.py
+
+      - name: Değişikliği depoya kaydet
+        run: |
+          git config user.name "ispark-bot"
+          git config user.email "ispark-bot@users.noreply.github.com"
+          git add data/ispark_log.csv
+          git diff --staged --quiet || git commit -m "veri: $(date -u +'%Y-%m-%d %H:%M') UTC"
+          git pull --rebase
+          git push
