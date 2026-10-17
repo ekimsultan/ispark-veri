@@ -1,4 +1,3 @@
-# ispark-veri
 # İSPARK Otopark Doluluk Verisi
 
 Bu depo, "İSPARK Otopark Doluluk Analizi ve Park Et Devam Et (P+R) Kapasite
