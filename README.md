@@ -1,8 +1,4 @@
 # İSPARK Otopark Doluluk Verisi
-
-Bu depo, "İSPARK Otopark Doluluk Analizi ve Park Et Devam Et (P+R) Kapasite
-Optimizasyonu" başlıklı araştırma çalışması için toplanan ham veriyi içerir.
-
 ## Veri toplama
 
 - Kaynak: İBB İSPARK Park API (https://api.ibb.gov.tr/ispark/Park)
@@ -26,5 +22,4 @@ Bu çalışma İBB tarafından desteklenmemekte veya onaylanmamaktadır.
 
 - Veri, API'nin döndürdüğü otoparkları kapsar; İstanbul'daki tüm İSPARK
   otoparklarını kapsamayabilir.
-- Doluluk bilgisi, P+R talebinin doğrudan ölçümü değil, bir göstergesidir.
 - Veri "olduğu gibi" sunulur; hatalı veya tutarsız kayıtlar içerebilir.
